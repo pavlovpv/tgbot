@@ -27,6 +27,7 @@ main.post("/new-message", async (req, res) => {
     case "task":
       startJob(messageText);
       responseText = 'task add'
+      break;
     default:
       responseText = ":)";
   }

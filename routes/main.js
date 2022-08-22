@@ -1,11 +1,12 @@
 const express = require("express");
-const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`
+const axios = require("axios");
+const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 let main = express.Router();
 
 main.post("/new-message", async (req, res) => {
-    const { message } = req.body;
-    console.log("new-message: ", message);
+  const { message } = req.body;
+  console.log("new-message: ", message);
 
   const messageText = message?.text?.toLowerCase()?.trim();
   const chatId = message?.chat?.id;
@@ -30,7 +31,7 @@ main.post("/new-message", async (req, res) => {
       text: responseText,
     });
     res.send("Done");
-    console.log('new-message-complete')
+    console.log("new-message-complete");
   } catch (e) {
     console.log(e);
     res.send(e);

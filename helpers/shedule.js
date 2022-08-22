@@ -1,11 +1,21 @@
 const schedule = require("node-schedule");
+const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 function startJob(message) {
-  
-  const date = new Date(2012, 11, 21, 5, 30, 0);
-
+  time = message[1].split(":");
+  let date = new Date();
+  date.setHours(+time[0] + 3, +time[1], 0, 0);
   const job = schedule.scheduleJob(date, function () {
-    console.log("The world is going to end today.");
+    try {
+        await axios.post(TELEGRAM_URI, {
+          chat_id: chatId,
+          text: message[1] + " " + message[2],
+        });
+        res.send("Done");
+      } catch (e) {
+        console.log(e);
+        res.send(e);
+      }
   });
 }
 

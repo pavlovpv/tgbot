@@ -25,7 +25,8 @@ main.post("/new-message", async (req, res) => {
       responseText = "Hello leather bastard";
       break;
     case "task":
-      responseText = startJob(messageText);
+      startJob(messageText);
+      responseText = 'task add'
     default:
       responseText = ":)";
   }

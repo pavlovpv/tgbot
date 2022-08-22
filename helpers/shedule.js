@@ -8,7 +8,7 @@ function startJob(message) {
   console.log('t==>', time)
   let date = new Date();
   console.log('d==>', date)
-  date.setHours(+time[0] + 3, +time[1], 0, 0);
+  date.setHours(+time[0] , +time[1], 0, 0);
   console.log('d==>', date)
   const job = schedule.scheduleJob(date, async function () {
     try {

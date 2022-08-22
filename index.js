@@ -1,6 +1,4 @@
 const express = require("express");
-import { config } from "dotenv";
-config();
 
 let appServer = require("./server");
 

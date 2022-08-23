@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 const startJob = require("../helpers/shedule");
+const defaultMessage = require('../defaultMessage.json')
 
 let main = express.Router();
 
@@ -17,14 +18,21 @@ main.post("/new-message", async (req, res) => {
     return res.sendStatus(400);
   }
 
-  let responseText = "I have nothing to say.";
+  let responseText;
 
   switch (command) {
+    case "/start":
+      responseText = defaultMessage["/start"]
+      break
+    case '@help':
+      responseText =  defaultMessage["@help"]
+      break
     case "hi":
     case "hello":
-      responseText = "Hello";
+    case "привет":
+      responseText = "Привет)";
       break;
-    case "task":
+    case "@task":
       startJob(messageText, chatId);
       responseText = 'task add'
       break;

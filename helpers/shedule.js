@@ -17,7 +17,7 @@ function startJob(message, chatId) {
         console.log('task dont add',e);
         await axios.post(TELEGRAM_URI, {
           chat_id: chatId,
-          text: 'task dont add',
+          text: 'произошла ошибка',
         });
       }
   });

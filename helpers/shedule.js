@@ -2,7 +2,7 @@ const schedule = require("node-schedule");
 const axios = require("axios");
 const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
-function startJob(message) {
+function startJob(message, chatId) {
     console.log('m==>', message)
   time = message[1].split(":");
   console.log('t==>', time)

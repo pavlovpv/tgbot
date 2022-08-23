@@ -22,7 +22,7 @@ main.post("/new-message", async (req, res) => {
   switch (command) {
     case "hi":
     case "hello":
-      responseText = "Hello leather bastard";
+      responseText = "Hello";
       break;
     case "task":
       startJob(messageText, chatId);

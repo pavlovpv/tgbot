@@ -11,7 +11,7 @@ function startJob(message, chatId) {
     newDate.setFullYear(date[2], date[1] - 1, date[0]);
   }
 
-  time = messageDate.split(":");
+  let time = messageDate.split(":");
   newDate.setHours(+time[0] - 3 , +time[1], 0, 0);
   console.log('==> ',newDate)
   const textMessage = message.slice(1).join(' ')

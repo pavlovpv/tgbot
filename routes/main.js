@@ -34,10 +34,10 @@ main.post("/new-message", async (req, res) => {
       break;
     case "@task":
       startJob(messageText, chatId);
-      responseText = 'task add'
+      responseText = 'Обязательно напомню'
       break;
     default:
-      responseText = ":)";
+      responseText = defaultMessage.any;
   }
 
   try {
